@@ -11,6 +11,7 @@
 #include "main.h"
 #include <stdio.h>
 
+extern UART_HandleTypeDef huart2;
 
 #ifdef __GNUC__
 /* With GCC, small printf (option LD Linker->Libraries->Small printf
