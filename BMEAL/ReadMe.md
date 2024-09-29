@@ -5,8 +5,8 @@
 
 - BMEAL을 사용하는 방법은 main.c에서 다름과 같이 include한다.
  
-'''c
-  #include "main.h"
+'''c     
+#include "main.h"
 #include "../ECUAL/LCD16x2/LCD16x2.h"
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
