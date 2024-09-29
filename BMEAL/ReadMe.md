@@ -7,7 +7,7 @@
  
 ```c     
 #include "main.h"
-#include "../ECUAL/LCD16x2/LCD16x2.h"
+#include "../../BMEAL/SEVEN_SEGMENTS/SEVEN_SEGMENTS.h"
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
  
@@ -17,10 +17,9 @@ int main(void)
     SystemClock_Config();
     MX_GPIO_Init();
  
-    LCD_Init();
-    LCD_Clear();
-    LCD_Set_Cursor(1, 1);
-    LCD_Write_String("It Works! GG izi");
+    SEVEN_SEG_Init(0);
+    SEVEN_SEG_Enable(0);
+    SEVEN_SEG_Write(0, 0);
  
     while (1)
     {
