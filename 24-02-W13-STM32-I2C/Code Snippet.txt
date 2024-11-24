@@ -1,3 +1,8 @@
+/**
+
+- LM75 온도센서로부터 온도 읽어 들이기:  추가되는 코드는 다음과 같음.    ( STM32CubeIde의 코드 부분을 제외한 순수하게 추가되는 코드)
+**/
+
 /* Private define --------------------------------------------------*/
 /* USER CODE BEGIN PD */
 //#define LM75_ADDR 0x90 // 7-bit address of LM75: left align to MSbit
