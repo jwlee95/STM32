@@ -1,0 +1,33 @@
+/* Private define --------------------------------------------------*/
+/* USER CODE BEGIN PD */
+//#define LM75_ADDR 0x90 // 7-bit address of LM75: left align to MSbit
+#define LM75_ADDR 0x4C<<1
+#define LM75_TEMP 0x00 // Temperature Register of LM75
+#define LM75_CONF 0x01 // Configuration Register of LM75
+#define LM75_HYST 0x02 //
+#define LM75_TOS 0x03 // Over-temp Shutdown threshold Register of LM75
+#define LM75_DevID 0x07 // Product ID Register
+#define LM75_TEMP_CORR (float)(0.5) //LM75
+/* USER CODE END PD */
+
+
+
+
+float GetTempLM75(I2C_HandleTypeDef *_hi2c){
+  int16_t Result2;
+  float RetRes;
+  uint8_t LM75Data[2];
+  HAL_I2C_Mem_Read(_hi2c, (uint16_t)LM75_ADDR, (uint16_t)LM75_TEMP, I2C_MEMADD_SIZE_8BIT, LM75Data, 2, 10);
+  Result2 = (((int16_t)LM75Data[0] << 8)& 0xFF00) + ((int16_t)LM75Data[1] & 0x00FF) ;
+  Result2 /= 128; // Why Not?  (Result2 >> 7) & 0x80EF;
+  RetRes = (float)(Result2 * LM75_TEMP_CORR);
+  return RetRes;
+}
+
+while (1) {
+
+  /* USER CODE END WHILE */
+  HAL_Delay(500);
+  printf("Temperature(LM75): %5.1f \n", GetTempLM75(&hi2c1));
+  /* USER CODE BEGIN 3 */
+}
